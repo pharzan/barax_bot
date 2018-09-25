@@ -1,4 +1,7 @@
+
 # Barax bot 
+<img src="https://github.com/pharzan/barax_bot/blob/master/docs/logo.png" alt="Smiley face" width="180">
+
 ## A Telegram Voice/Sound Reverse Bot
 
 <p>A simple telegram bot written in python to reverse voice messages it recieves.</p>
