@@ -8,52 +8,60 @@
 
 <h3> Installation and Usage:</h3>
 <h4> Get a Token:</h4>
-1. Using the bot father create a Telegram bot to obtain a _Token_ explained
-[here](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
-The bot father will chat with you through the process of obtaining a token.
-Then replace the obtained token in the source code.
-The token should look something like this:
-```
-123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ
-```
+<p>
+    1. Using the bot father create a Telegram bot to obtain a _Token_ explained
+    <a href="https://core.telegram.org/bots#3-how-do-i-create-a-bot">here</a>.
+    The bot father will chat with you through the process of obtaining a token.
+    Then replace the obtained token in the source code.
+    The token should look something like this:
+    ```
+    123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ
+    ```
+</p>
 <h4> Install required packages</h4>
 
-
-2. Install [Telepot](https://telepot.readthedocs.io/en/latest/reference.html) for Python to use the Telegram API in
-python.
-```
-pip install telepot
-pip install telepot --upgrade # UPGRADE
-```
+<p>
+    2. Install <a href="https://telepot.readthedocs.io/en/latest/reference.html">Telepot</a> for Python to use the
+    Telegram
+    API in
+    python.
+</p>
+<code>
+    pip install telepot
+    pip install telepot --upgrade # UPGRADE
+</code>
 Or using Easy install:
-```
-easy_install telepot
-easy_install --upgrade telepot # UPGRADE
-```
+<code>
+    easy_install telepot
+    easy_install --upgrade telepot # UPGRADE
+</code>
 3. Use python to run the script.
-```
-python barax_bot.py
-```
+<code>
+    python barax_bot.py
+</code>
 <h3> How it works:</h3>
-The bot uses [subprocesses](https://docs.python.org/3/library/subprocess.html) in python to execute a
-[ffmpeg](https://www.ffmpeg.org/), handy Linux utility for audio and video.
+The bot uses <a href="https://docs.python.org/3/library/subprocess.html">subprocesses</a> in python to execute a
+<a href="https://www.ffmpeg.org/">ffmpeg</a>, handy Linux utility for audio and video.
 
 The bot listens to any messages that are recieved.
-```python
-def on_chat_message(self, msg):
-content_type, chat_type, chat_id, msg_date, msg_id = telepot.glance(msg,flavor='chat',long=True)
-```
+<code>
+    def on_chat_message(self, msg):
+    content_type, chat_type, chat_id, msg_date, msg_id = telepot.glance(msg,flavor='chat',long=True)
+</code>
 If the recieved message is a voice message and the duration is less than 30 seconds it downloads the file.
-```python
-file_name = msg['voice']['file_id']
-bot.download_file(msg['voice']['file_id'],"{0}.ogg".format(file_name))
-```
+<code>
+    file_name = msg['voice']['file_id']
+    bot.download_file(msg['voice']['file_id'],"{0}.ogg".format(file_name))
+</code>
 Finally it executes ffmpeg in the shell to simply reverses the ogg file and creates an MP3 to send to the user.
-```python
-shell_cmd = "yes y | ffmpeg -i {0} -vf reverse -af areverse -f mp3 {1}.mp3".format(my_file,file_name)
-p = subprocess.Popen(shell_cmd, shell=True,stdout=subprocess.PIPE)
-....
-bot.sendVoice(chat_id,open(file_name+'.mp3', 'rb'))
+<code>
+    shell_cmd = "yes y | ffmpeg -i {0} -vf reverse -af areverse -f mp3 {1}.mp3".format(my_file,file_name)
+    p = subprocess.Popen(shell_cmd, shell=True,stdout=subprocess.PIPE)
+    ....
+    bot.sendVoice(chat_id,open(file_name+'.mp3', 'rb'))
 
-```
-Notice: The chat ID is a unique ID created by Telegram which is an identifier between the bot and user chat.
+</code>
+<p>
+    Notice: The chat ID is a unique ID created by Telegram which is an identifier between the bot and user chat.
+    by <a href="http://pharzan.com">Farzan Tinati</a>
+</p>
