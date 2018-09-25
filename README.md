@@ -5,9 +5,15 @@
 ## A Telegram Voice/Sound Reverse Bot
 
 <p>A simple telegram bot written in python to reverse voice messages it recieves.</p>
+
+### Test:
 <p>You can use this <a href="http://t.me/barax_bot">link</a> to test the bot.</p>
 
 ### Installation and Usage:
+Before anything you can clone the repository using:
+```
+git clone https://github.com/pharzan/barax_bot.git
+```
 #### Get a Token:
 1. Using the bot father create a Telegram bot to obtain a _Token_ explained [here](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
 The bot father will chat with you through the process of obtaining a token.
